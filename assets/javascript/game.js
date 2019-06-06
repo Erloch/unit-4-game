@@ -38,12 +38,13 @@
 
 var wins = 0;
 var losses = 0;
-var goal = goal; //19-120
+var goal = 0; //19-120
 var score = 0;
-var crystals = [{image:"assets/images/c1.jpg", score:0},{image:"assets/images/c2.png", score:0},{image:"assets/images/c3.jpg", score:0},{image:"assets/images/c4.png", score:0} ]
+var crystals = [{image:"assets/images/c1.jpg", score:0},{image:"assets/images/c2.png", score:0},{image:"assets/images/c3.jpg", score:0},{image:"assets/images/c4.png", score:0} ];
 
 // console.log(crystalVal)
     function makeCrystals(){
+        $("#crystals").empty();
         for(var i=0;i<crystals.length;i++){
             var crystalImg = $("<img src=" + crystals[i].image + ">");
             crystalImg.addClass("images");
@@ -54,23 +55,37 @@ var crystals = [{image:"assets/images/c1.jpg", score:0},{image:"assets/images/c2
             // console.log(crystals[i].score)
             
         }
-    }
+    };
     
-$("#crystals").on("click","img",function crystalVal(){
+$("#crystals").on("click","img",function(){
     var crystalVal = $(this).attr("crystalval");
     score = parseInt(crystalVal) + score;
        $("#score").text(score);
-   
+       if (score === goal){
+        wins++;
+        $("#wins").text(wins);
+        alert("!!!You're a Winner!!!")
+        reset();
+        } else if (score > goal){
+        losses++;
+        $("#losses").text(losses);
+        alert("You're a Loser!")
+        reset();
+        
+        };
+       
 });
 
 function reset(){
+    $("#goal").empty();
+    $("#score").empty();
     score = 0;
     makeCrystals();
     goal = Math.floor(Math.random()*120)+19;
 $("#goal").append(goal);
+
 };
 reset()
-
 
 
 //creat function to start/reset game
@@ -83,24 +98,7 @@ reset()
             //creat new crystal values between 1-12
             //update score to 0
 
-// creat function to test wins/losses
-  
-
-    if (score === goal){
-    win++;
-    $("#wins").text(wins);
-    reset();
-    }
-    //call reset function
-    if (score > goal){
-    losses++;
-    $("#losses").text(losses);
-    reset();
-    
-    }
-
-
-    //call reset function
+// creat function to test wins/losses //call reset function
 //creat a click event
 // $("crystal").on("click",function(){
 
