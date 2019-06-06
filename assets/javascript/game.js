@@ -38,18 +38,41 @@
 
 var wins = 0;
 var losses = 0;
-var goal = ""; //19-120
+var goal = goal; //19-120
 var score = 0;
-var crystal = ""; //1-12
-var reset = "";
-function crystals(){
-    crystal = Math.floor(Math.random() * 12)+1;
-console.log(crystal)
-}
-function reset(){
+var crystals = [{image:"assets/images/c1.jpg", score:0},{image:"assets/images/c2.png", score:0},{image:"assets/images/c3.jpg", score:0},{image:"assets/images/c4.png", score:0} ]
+
+// console.log(crystalVal)
+    function makeCrystals(){
+        for(var i=0;i<crystals.length;i++){
+            var crystalImg = $("<img src=" + crystals[i].image + ">");
+            crystalImg.addClass("images");
+            // crystals[i].score = Math.floor(Math.random()*12)+1;
+            crystalImg.attr("crystalval", Math.floor(Math.random()*12)+1)
+            $("#crystals").append(crystalImg);
+            // crystalVal = crystals[i].score
+            // console.log(crystals[i].score)
+            
+        }
+    }
     
-goal = goal.getRandomNumberInRange(19, 120);
+$("#crystals").on("click","img",function crystalVal(){
+    var crystalVal = $(this).attr("crystalval");
+    score = parseInt(crystalVal) + score;
+       $("#score").text(score);
+   
+});
+
+function reset(){
+    score = 0;
+    makeCrystals();
+    goal = Math.floor(Math.random()*120)+19;
+$("#goal").append(goal);
 };
+reset()
+
+
+
 //creat function to start/reset game
  //pick new goal -random number 
             //update wins to page
@@ -61,17 +84,21 @@ goal = goal.getRandomNumberInRange(19, 120);
             //update score to 0
 
 // creat function to test wins/losses
-   function test(result){
+  
 
-    if (result === goal){
+    if (score === goal){
     win++;
+    $("#wins").text(wins);
+    reset();
     }
     //call reset function
-    if (result > goal){
+    if (score > goal){
     losses++;
+    $("#losses").text(losses);
+    reset();
+    
     }
 
-};
 
     //call reset function
 //creat a click event
