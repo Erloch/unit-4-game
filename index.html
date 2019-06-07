@@ -14,27 +14,38 @@
 </head>
 
 <body>
-    <container>
+    <container id="container">
         <div id="header"><strong>Digging up a Fortune</strong></div>
         <div id="instructions">
             <p>Instruction:</p>
-            <p>Your goal will be selected randomly. Pick a crystal to click. Each crystal will have a random value at
-                the begining of the game. To win pick crystals to add to the goal. Going over will be a loss. Have fun!
-            </p>
+            <p>Welcome to Crystal Dig!</p> 
+
+<p> You are now embarking on an adventure to either fortune or great loss.</p> 
+<br></br>
+<p> Use your mouse to dig up a crystal. Each crystal will have a random value at the beginning of the dig.</p> 
+<br></br>
+<p> To win pick crystals to add to your haul. Do not haul-in too many crystals or they may be Stolen. Have fun!</p> 
+            
         </div>
         <div id="crystals"></div>
-        <div id="score"></div>
-        <div id="goal">
-            <p>Goal</p>
+        
+        <div id="myHaul" class="clearfix">Your Haul:
+            <p id="score"></p>
         </div>
-        <div>
-            <p>Wins:</p>
-            <p id="wins"></p>
+        
+        <div id="haul"class="clearfix">
+            <p>Goal:</p>
+            <p id="goal" ></p>
         </div>
-        <div>
-            <p>Losses:</p>
-            <p id="losses"></p>
+    
+        <div id="wins-losses" class="clearfix">
+          <div><p>Wins:</p>
+            <p id="wins">0</p></div>
+         <div>   <p>Losses:</p>
+            <p id="losses">0</p>
         </div>
+    
+
 
 
 

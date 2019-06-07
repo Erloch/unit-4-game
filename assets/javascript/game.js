@@ -64,12 +64,12 @@ $("#crystals").on("click","img",function(){
        if (score === goal){
         wins++;
         $("#wins").text(wins);
-        alert("!!!You're a Winner!!!")
+        alert("!!!  Fortune is YOURS  !!!")
         reset();
         } else if (score > goal){
         losses++;
         $("#losses").text(losses);
-        alert("You're a Loser!")
+        alert("!THEY TOOK YOUR GOLD!")
         reset();
         
         };
